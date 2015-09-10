@@ -1,0 +1,28 @@
+{
+  "name": "hellow-hapi",
+  "version": "1.0.0",
+  "description": "this is a simple app made using hapi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BransonGitomeh/hapi-hello-world.git"
+  },
+  "keywords": [
+    "hellow-hapi"
+  ],
+  "author": "BransonGitomeh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BransonGitomeh/hapi-hello-world/issues"
+  },
+  "homepage": "https://github.com/BransonGitomeh/hapi-hello-world",
+  "dependencies": {
+    "good": "^6.3.0",
+    "good-console": "^5.0.3",
+    "h": "^0.1.0",
+    "hapi": "^9.3.1"
+  }
+}
