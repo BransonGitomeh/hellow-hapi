@@ -7,6 +7,8 @@ var Good = require('good');
 //some weird shit they call relative files
 
 //TODO explain wth this is when i get it
+
+//---ddnt get it :-p
 var Path = require('path');
 
 //make a new server object
@@ -14,7 +16,7 @@ var server = new Hapi.Server({
   connections:{
     routes:{
       files:{
-        relativeTo:Path.join(__dirname,'public')
+        relativeTo:Path.join('/home/bransongk/Downloads','public')
       }
     }
   }
@@ -76,6 +78,26 @@ server.route({
   path:'/husky.jpg',
   handler:function(request,reply){
     reply.file('/home/bransongk/Downloads/husky.jpg')
+  }
+})
+
+// server.route({
+//     method: 'GET',
+//     path: '/{filename}',
+//     handler: {
+//         file: function (request) {
+//             return request.params.filename;
+//         }
+//     }
+// });
+
+server.route({
+  method:'GET',
+  path:'/pictures/{filename}',
+  handler:function(request,reply){
+    var path  = '/home/bransongk/Downloads/' + request.params.filename;
+    console.log(path);
+    reply.file(path)
   }
 })
 
