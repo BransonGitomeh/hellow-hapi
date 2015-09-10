@@ -1,4 +1,8 @@
+//mother lib
 var Hapi = require('hapi');
+
+//lib for logging server events
+var Good = require('good');
 
 //make a new server object
 var server = new Hapi.Server();
@@ -38,6 +42,28 @@ server.route({
   method:'GET',
   path:'/{name}/{age}',
   handler:function(request,reply){
+
+    //since the good console logger is now part of the server you can use it 
+    server.log('info', 'server running at ; ' + server.info.uri)
     reply('Heeey, ' + encodeURIComponent(request.params.name) + ' ' + encodeURIComponent(request.params.age) + ' im happy')
   }
 })
+
+//add the good plugin to the server to be used
+server.register({
+  register:Good,
+  options:{
+    reporters:[{
+      reporter: require('good-console'),
+      events:{
+        responce:'*',
+        log:'*'
+      }
+    }]
+  }
+},function(err){
+  if(err){
+    throw err;
+    //couldnt load the good girl plugin
+  }
+});
