@@ -32,6 +32,8 @@ server.route({
 })
 
 //shows multiple url objects being used
+
+//TODO add optional "params to the route"
 server.route({
   method:'GET',
   path:'/{name}/{age}',
