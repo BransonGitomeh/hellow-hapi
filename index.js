@@ -47,6 +47,15 @@ server.route({
   }
 })
 
+//endpoint for random picture from fs
+server.route({
+  method:'GET',
+  path:'/randomPicture',
+  handler:function(request,reply){
+    reply.file('/home/bransongk/Downloads/husky.jpg')
+  }
+})
+
 //Plugins-----------------------------------------------------------------
 
 //add the good plugin to the server to be used
