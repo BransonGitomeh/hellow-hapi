@@ -16,8 +16,8 @@ server.start(function(){
   console.log('server running at: ', server.info.uri);
 });
 
-
-//this are the routes that we need
+//Routes-------------------------------------------------------
+//simple endpoint no complications
 server.route({
   method:'GET',
   path:'/',
@@ -26,7 +26,7 @@ server.route({
   }
 })
 
-//this are the routes that we need
+//endpoint with dynamic data
 server.route({
   method:'GET',
   path:'/{name}',
@@ -35,19 +35,19 @@ server.route({
   }
 })
 
-//shows multiple url objects being used
-
-//TODO add optional "params to the route"
+//endpoint with more than one dynamic end
 server.route({
   method:'GET',
   path:'/{name}/{age}',
   handler:function(request,reply){
 
-    //since the good console logger is now part of the server you can use it 
+    //since the good console logger is now part of the server you can use it
     server.log('info', 'server running at ; ' + server.info.uri)
     reply('Heeey, ' + encodeURIComponent(request.params.name) + ' ' + encodeURIComponent(request.params.age) + ' im happy')
   }
 })
+
+//Plugins-----------------------------------------------------------------
 
 //add the good plugin to the server to be used
 server.register({
@@ -62,6 +62,15 @@ server.register({
     }]
   }
 },function(err){
+  if(err){
+    throw err;
+    //couldnt load the good girl plugin
+  }
+});
+
+//add the inert file plugin to your project to serve content from server
+server.register(
+    require('inert'),function(err){
   if(err){
     throw err;
     //couldnt load the good girl plugin
